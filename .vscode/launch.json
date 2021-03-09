@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'five_three_one generate'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=five_three_one",
+                    "--package=five_three_one"
+                ],
+                "filter": {
+                    "name": "five_three_one",
+                    "kind": "bin"
+                }
+            },
+            "args": ["generate", "-s", "310", "-d", "335", "-b", "215", "-o", "130", "-m", "13", "-w", "./weights.toml"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'five_three_one weight-combos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=five_three_one",
+                    "--package=five_three_one"
+                ],
+                "filter": {
+                    "name": "five_three_one",
+                    "kind": "bin"
+                }
+            },
+            "args": ["weight-combos", "-w", "45x2", "-w", "35", "-w", "25x2", "-w", "10x2", "-w", "5", "-w", "2.5"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'five_three_one'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=five_three_one",
+                    "--package=five_three_one"
+                ],
+                "filter": {
+                    "name": "five_three_one",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
