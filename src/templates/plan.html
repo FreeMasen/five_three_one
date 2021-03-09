@@ -1,233 +1,287 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            html, body {
-                border: 0;
-                padding: 0;
-                margin: 0;
-                width: 11in;
-            }
-            
-            h1 {
-                text-align: center;
-            }
-            .plan-list {
-                display: flex;
-                flex-flow: column;
-            }
-            @media print {
-                @page {
-                    margin-top: 0.5in;
-                    margin-left: 0.5in;
-                    margin-right: 0.5in;
-                    margin-bottom: 0.5in;
-                 }
-                h1, h2 {
-                    page-break-after: avoid;
-                    break-after: avoid;
-                }
-                .week {
-                    page-break-after: always;
-                    page-break-inside: avoid;
-                    break-after: always;
-                    break-inside: avoid;
-                }
-            }
-            .week > h2 {
-                text-align: center;
-            }
-            .week-data {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-                grid-template-rows: auto;
-                grid-template-areas: "week1 week2 week3 week4"
+
+<head>
+    <style>
+        html,
+        body {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            width: 11in;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .plan-list {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+        @media print {
+            @page {
+                margin-top: 0.25in;
+                margin-left: 0.5in;
+                margin-right: 0.5in;
+                margin-bottom: 0.5in;
             }
 
-            .exercise {
-                font-size: 11pt;
-                display: flex;
-                flex-flow:row nowrap;
-                justify-content: space-around;
+            h1,
+            h2 {
+                page-break-after: avoid;
+                break-after: avoid;
             }
 
-            .supports > .exercise {
-                display: grid;
-                grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+            .week {
+                page-break-after: always;
+                page-break-inside: avoid;
+                break-after: always;
+                break-inside: avoid;
             }
-            .exercise + .exercise,
-            .supports {
-                margin-top: 10px;
-            }
+        }
 
-            .exercise-detail {
-                display: flex;
-                flex-flow: column;
-                align-items: center;
-            }
+        .day {
+            width: 4in;
+            height: 7.5in;
+            margin: 0.5in;
+        }
 
-            .exercise-weight {
-                display: flex;
-                flex-flow:row nowrap;
-                align-items: center;
-                justify-content: start;
-            }
+        .day>h2,
+        .day>h3 {
+            text-align: center;
+        }
 
-            .exercise-reps {
-                font-weight: bold;
-            }
+        .exercise {
+            font-size: 11pt;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+        }
 
-            .weight-side {
-                font-size: 8pt;
-            }
+        .support {
+            line-height: 24pt;
+        }
 
-        </style>
-    </head>
-    <body>
-        {%block content%}
-            <h1>5/3/1 Plan</h1>
-            <div class="plan-list">
-                {% for week in weeks %}
-                <div class="week">
-                    <h2>
-                    {% if week.number == 4 %}
-                        Rest Week
-                    {% elif week.number == 3 %}
-                        Max Week
-                    {% elif week.number == 1 %}
-                        First Week
-                    {% elif week.number == 2 %}
-                        Second Week
-                    {% endif %}
-                    </h2>
-                    <div class="week-data">
+        .support-exercises {
+            margin-top: 5px;
+        }
 
+        .exercise-detail {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
 
-                    <div class="day bench">
-                        <h3>Bench ______________</h3>
-                        <div class="exercise">
-                            {% for weight in week.bench %}
-                            <div class="exercise-detail">
-                                <div class="exercise-weight">
-                                    <span class="weight-value">{{weight.value}}#</span>
-                                    <span>x</span>
-                                    {% if loop.index == 3 %}
-                                    <span class="exercise-reps empty">___</span>
-                                    {% else %}
-                                    <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
-                                    {% endif %}
-                                </div> 
-                                <span class="weight-side">{{weight.side}}</span>
-                            </div>
-                            
-                            {% endfor %}
-                        </div>
-                        <div class="supports">
-                            {% for support in supports.bench %}
-                            <div class="exercise">
-                                <span class="exercise-name">{{support.name}}</span>
-                                <span class="weight-value">____#</span>
-                                <div class="exercise-reps empty">___</div>
-                                <div class="exercise-reps empty">___</div>
-                                <div class="exercise-reps empty">___</div>
-                            </div>
-                            {% endfor %}
-                        </div>
+        .exercise-weight {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: start;
+        }
+
+        .exercise-reps {
+            font-weight: bold;
+        }
+
+        .weight-side {
+            font-size: 8pt;
+        }
+    </style>
+</head>
+
+<body>
+    {%block content%}
+
+    <div class="plan-list">
+        {% for week in weeks %}
+        <div class="day">
+            <h2>
+                {% if week.number == 4 %}
+                Rest Week
+                {% elif week.number == 3 %}
+                Max Week
+                {% elif week.number == 1 %}
+                First Week
+                {% elif week.number == 2 %}
+                Second Week
+                {% endif %}
+            </h2>
+            <h3>Bench ______________</h3>
+            <div class="exercise">
+                {% for weight in week.bench %}
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">{{weight.value}}#</span>
+                        <span>x</span>
+                        {% if loop.index == 3 %}
+                        <span class="exercise-reps empty">_____</span>
+                        {% else %}
+                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        {% endif %}
                     </div>
-                    <div class="day squat">
-                        <h3>Squat ______________</h3>
-                        <div class="exercise">
-                            {% for weight in week.squat %}
-                            <div class="exercise-detail">
-                                <div class="exercise-weight">
-                                    <span class="weight-value">{{weight.value}}#</span>
-                                    <span>x</span>
-                                    {% if loop.index == 3 %}
-                                    <span class="exercise-reps empty">___</span>
-                                    {% else %}
-                                    <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
-                                    {% endif %}
-                                </div> 
-                                <span class="weight-side">{{weight.side}}</span>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <div class="supports">
-                            {% for support in supports.squat %}
-                                <div class="exercise">
-                                    <span class="exercise-name">{{support.name}}</span>
-                                    <span class="weight-value">____#</span>
-                                    <div class="exercise-reps empty">___</div>
-                                    <div class="exercise-reps empty">___</div>
-                                    <div class="exercise-reps empty">___</div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="day ohp">
-                        <h3>OHP ______________</h3>
-                        <div class="exercise">
-                            {% for weight in week.ohp %}
-                            <div class="exercise-detail">
-                                <div class="exercise-weight">
-                                    <span class="weight-value">{{weight.value}}#</span>
-                                    <span>x</span>
-                                    {% if loop.index == 3 %}
-                                    <span class="exercise-reps empty">___</span>
-                                    {% else %}
-                                    <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
-                                    {% endif %}
-                                </div> 
-                                <span class="weight-side">{{weight.side}}</span>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <div class="supports">
-                            {% for support in supports.ohp %}
-                            <div class="exercise">
-                                <span class="exercise-name">{{support.name}}</span>
-                                <span class="weight-value">____#</span>
-                                <div class="exercise-reps empty">___</div>
-                                <div class="exercise-reps empty">___</div>
-                                <div class="exercise-reps empty">___</div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="day deads">
-                        <h3>Deads ______________</h3>
-                        <div class="exercise">
-                            {% for weight in week.dead %}
-                            <div class="exercise-detail">
-                                <div class="exercise-weight">
-                                    <span class="weight-value">{{weight.value}}#</span>
-                                    <span>x</span>
-                                    {% if loop.index == 3 %}
-                                    <span class="exercise-reps empty">___</span>
-                                    {% else %}
-                                    <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
-                                    {% endif %}
-                                </div> 
-                                <span class="weight-side">{{weight.side}}</span>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <div class="supports">
-                            {% for support in supports.dead %}
-                            <div class="exercise">
-                                <span class="exercise-name">{{support.name}}</span>
-                                <span class="weight-value">____#</span>
-                                <div class="exercise-reps empty">___</div>
-                                <div class="exercise-reps empty">___</div>
-                                <div class="exercise-reps empty">___</div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
+                    <span class="weight-side">{{weight.side}}</span>
                 </div>
-            </div>
                 {% endfor %}
             </div>
-        {% endblock content %}
-    </body>
+            <div class="support-exercises">
+                {% for i in range(end=13) %}
+                <div class="support exercise">
+                    <div class="name-weight">
+                        <span>_________________________</span>
+                        <span>_____#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span>_____</span>
+                        <span>_____</span>
+                        <span>_____</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                {% if week.number == 4 %}
+                Rest Week
+                {% elif week.number == 3 %}
+                Max Week
+                {% elif week.number == 1 %}
+                First Week
+                {% elif week.number == 2 %}
+                Second Week
+                {% endif %}
+            </h2>
+            <h3>Squat ______________</h3>
+            <div class="exercise">
+                {% for weight in week.squat %}
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">{{weight.value}}#</span>
+                        <span>x</span>
+                        {% if loop.index == 3 %}
+                        <span class="exercise-reps empty">_____</span>
+                        {% else %}
+                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        {% endif %}
+                    </div>
+                    <span class="weight-side">{{weight.side}}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="support-exercises">
+                {% for i in range(end=13) %}
+                <div class="support exercise">
+                    <div class="name-weight">
+                        <span>_________________________</span>
+                        <span>_____#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span>_____</span>
+                        <span>_____</span>
+                        <span>_____</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                {% if week.number == 4 %}
+                Rest Week
+                {% elif week.number == 3 %}
+                Max Week
+                {% elif week.number == 1 %}
+                First Week
+                {% elif week.number == 2 %}
+                Second Week
+                {% endif %}
+            </h2>
+            <h3>OHP ______________</h3>
+            <div class="exercise">
+                {% for weight in week.ohp %}
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">{{weight.value}}#</span>
+                        <span>x</span>
+                        {% if loop.index == 3 %}
+                        <span class="exercise-reps empty">_____</span>
+                        {% else %}
+                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        {% endif %}
+                    </div>
+                    <span class="weight-side">{{weight.side}}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="support-exercises">
+                {% for i in range(end=13) %}
+                <div class="support exercise">
+                    <div class="name-weight">
+                        <span>_________________________</span>
+                        <span>_____#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span>_____</span>
+                        <span>_____</span>
+                        <span>_____</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                {% if week.number == 4 %}
+                Rest Week
+                {% elif week.number == 3 %}
+                Max Week
+                {% elif week.number == 1 %}
+                First Week
+                {% elif week.number == 2 %}
+                Second Week
+                {% endif %}
+            </h2>
+            <h3>Deads ______________</h3>
+            <div class="exercise">
+                {% for weight in week.dead %}
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">{{weight.value}}#</span>
+                        <span>x</span>
+                        {% if loop.index == 3 %}
+                        <span class="exercise-reps empty">_____</span>
+                        {% else %}
+                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        {% endif %}
+                    </div>
+                    <span class="weight-side">{{weight.side}}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="support-exercises">
+                {% for i in range(end=13) %}
+                <div class="support exercise">
+                    <div class="name-weight">
+                        <span>_________________________</span>
+                        <span>_____#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span>_____</span>
+                        <span>_____</span>
+                        <span>_____</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endblock content %}
+</body>
+
 </html>
