@@ -1,4 +1,14 @@
-use std::{cmp::Ordering, collections::HashMap, convert::{TryFrom, TryInto}, fmt::Debug, fs::write, iter, ops::{Add, Deref, Mul}, path::PathBuf, str::FromStr};
+use std::{
+    cmp::Ordering,
+    collections::HashMap,
+    convert::{TryFrom, TryInto},
+    fmt::Debug,
+    fs::write,
+    iter,
+    ops::{Add, Deref, Mul},
+    path::PathBuf,
+    str::FromStr,
+};
 
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
@@ -43,7 +53,7 @@ pub struct GenerateArgs {
     /// This can be generated using the weight-combos command
     #[structopt(short, long)]
     weights_path: Option<PathBuf>,
-    
+
     /// A path to a .toml, .json or .yaml file including all of the extra
     /// exercises you have planned for each workout, if not provided 4x45 1x35 1x25 2x10 1x5 1x2.5 is assumed
     #[structopt(short, long)]
@@ -150,51 +160,66 @@ pub struct Week {
 }
 
 impl Week {
-    fn new(number: u32,
+    fn new(
+        number: u32,
         squat: [f32; 3],
         dead: [f32; 3],
         bench: [f32; 3],
         ohp: [f32; 3],
-        reps: u8,) -> Self {
-            Self {
-                number,
-                squat,
-                dead,
-                bench,
-                ohp,
-                reps: [reps; 3],
-            }
+        reps: u8,
+    ) -> Self {
+        Self {
+            number,
+            squat,
+            dead,
+            bench,
+            ohp,
+            reps: [reps; 3],
+        }
     }
 
-    fn new_week_three(number: u32,
+    fn new_week_three(
+        number: u32,
         squat: [f32; 3],
         dead: [f32; 3],
         bench: [f32; 3],
-        ohp: [f32; 3],) -> Self {
-            Self {
-                number,
-                squat,
-                dead,
-                bench,
-                ohp,
-                reps: [5, 3, 1],
-            }
+        ohp: [f32; 3],
+    ) -> Self {
+        Self {
+            number,
+            squat,
+            dead,
+            bench,
+            ohp,
+            reps: [5, 3, 1],
         }
+    }
 }
 
-
-
-#[derive(Debug, Serialize, Deserialize, Clone, Default)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Supports {
+    included_weeks: Vec<u8>,
     bench: Vec<Support>,
     dead: Vec<Support>,
     ohp: Vec<Support>,
     squat: Vec<Support>,
 }
 
+impl std::default::Default for Supports {
+    fn default() -> Self {
+        
+        Supports {
+            included_weeks: Vec::new(),
+            bench: Vec::new(),
+            dead: Vec::new(),
+            ohp: Vec::new(),
+            squat: Vec::new(),
+        }
+    }
+}
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Support {
-    name: String
+    name: String,
 }
 
 #[derive(Debug, Serialize, Clone)]
@@ -215,33 +240,46 @@ struct Weight {
 
 impl Week {
     pub fn as_rendered(&self, available: &HashMap<Float, Vec<f32>>) -> RenderedWeek {
-        let squat = self.squat.iter().map(|f| {
-            Weight {
+        let squat = self
+            .squat
+            .iter()
+            .map(|f| Weight {
                 value: format!("{: >3}", f),
-                side: format_side(f, &available)
-            }
-        }).collect();
-        let dead = self.dead.iter().map(|f| Weight {
-            value: format!("{: >3}", f),
-            side: format_side(f, &available)
-        }).collect();
-        let bench = self.bench.iter().map(|f| Weight {
-            value: format!("{: >3}", f),
-            side: format_side(f, &available)
-        }).collect();
-        let ohp = self.ohp.iter().map(|f| Weight {
-            value: format!("{: >3}", f),
-            side: format_side(f, &available)
-        }).collect();
+                side: format_side(f, &available),
+            })
+            .collect();
+        let dead = self
+            .dead
+            .iter()
+            .map(|f| Weight {
+                value: format!("{: >3}", f),
+                side: format_side(f, &available),
+            })
+            .collect();
+        let bench = self
+            .bench
+            .iter()
+            .map(|f| Weight {
+                value: format!("{: >3}", f),
+                side: format_side(f, &available),
+            })
+            .collect();
+        let ohp = self
+            .ohp
+            .iter()
+            .map(|f| Weight {
+                value: format!("{: >3}", f),
+                side: format_side(f, &available),
+            })
+            .collect();
         RenderedWeek {
             number: self.number,
             squat,
             dead,
             bench,
             ohp,
-            reps: self.reps
+            reps: self.reps,
         }
-
     }
 }
 
@@ -332,7 +370,13 @@ fn generate(gen_args: GenerateArgs) {
                     sets_from(ohp_base, WEEK_TWO_PERCENTS),
                     3,
                 )),
-                2 => weeks.push(Week::new_week_three(number, sets_from(squat_base, WEEK_THREE_PERCENTS), sets_from(dead_base, WEEK_THREE_PERCENTS), sets_from(bench_base, WEEK_THREE_PERCENTS), sets_from(ohp_base, WEEK_THREE_PERCENTS))),
+                2 => weeks.push(Week::new_week_three(
+                    number,
+                    sets_from(squat_base, WEEK_THREE_PERCENTS),
+                    sets_from(dead_base, WEEK_THREE_PERCENTS),
+                    sets_from(bench_base, WEEK_THREE_PERCENTS),
+                    sets_from(ohp_base, WEEK_THREE_PERCENTS),
+                )),
                 3 => weeks.push(Week::new(
                     number,
                     sets_from(squat_base, WEEK_FOUR_PERCENTS),
@@ -352,14 +396,19 @@ fn generate(gen_args: GenerateArgs) {
     let available_weights = read_weights(gen_args.weights_path);
     if let Some(html_path) = gen_args.file {
         let mut ctx = tera::Context::new();
-        ctx.insert("weeks", &weeks.iter().map(|w| w.as_rendered(&available_weights.0)).collect::<Vec<_>>());
+        ctx.insert(
+            "weeks",
+            &weeks
+                .iter()
+                .map(|w| w.as_rendered(&available_weights.0))
+                .collect::<Vec<_>>(),
+        );
         ctx.insert("supports", &read_supports(gen_args.extra_path));
         let out = tera::Tera::one_off(HTML, &ctx, false).unwrap();
         write(&html_path, out).unwrap();
     } else {
         print_plan_to_terminal(&weeks, &available_weights.0)
     }
-    
 }
 
 fn print_plan_to_terminal(weeks: &[Week], available_weights: &HashMap<Float, Vec<f32>>) {
@@ -375,19 +424,35 @@ fn print_plan_to_terminal(weeks: &[Week], available_weights: &HashMap<Float, Vec
         s.push_str("--------------------------\n");
         s.push_str("Bench\n");
         for set in &week.bench {
-            s.push_str(&format!(" {}{}\n", format!("{: >3}", set), format_side(set, &available_weights)));
+            s.push_str(&format!(
+                " {}{}\n",
+                format!("{: >3}", set),
+                format_side(set, &available_weights)
+            ));
         }
         s.push_str("Squats\n");
         for set in &week.squat {
-            s.push_str(&format!(" {}{}\n", format!("{: >3}", set), format_side(set, &available_weights)));
+            s.push_str(&format!(
+                " {}{}\n",
+                format!("{: >3}", set),
+                format_side(set, &available_weights)
+            ));
         }
         s.push_str("OHP\n");
         for set in &week.ohp {
-            s.push_str(&format!(" {}{}\n", format!("{: >3}", set), format_side(set, &available_weights)));
+            s.push_str(&format!(
+                " {}{}\n",
+                format!("{: >3}", set),
+                format_side(set, &available_weights)
+            ));
         }
         s.push_str("Deads\n");
         for set in &week.dead {
-            s.push_str(&format!(" {}{}\n", format!("{: >3}", set), format_side(set, &available_weights)));
+            s.push_str(&format!(
+                " {}{}\n",
+                format!("{: >3}", set),
+                format_side(set, &available_weights)
+            ));
         }
         week_strs.push(s);
     }
@@ -538,7 +603,8 @@ fn calculate_all_weights_from(available: &HashMap<Float, u8>) -> WeightsMap {
 }
 
 fn default_weights() -> WeightsMap {
-    let swm = toml::from_str::<SeralizedWeightsMap>(&DEFAULT_WEIGHTS).expect("Invalid default weights toml");
+    let swm = toml::from_str::<SeralizedWeightsMap>(&DEFAULT_WEIGHTS)
+        .expect("Invalid default weights toml");
     swm.try_into().expect("Invalid defaults weights")
 }
 

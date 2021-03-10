@@ -61,8 +61,43 @@
             justify-content: space-around;
         }
 
+        .name-weight {
+            display: grid;
+            grid-template-columns: 8fr 1fr 2fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "name space weight";
+            width: 230px;
+        }
+
+        .name-weight>.exercise-name {
+            display: block;
+            border-bottom: 1px solid black;
+            grid-area: name;
+        }
+
+        .weight-space {
+            text-align: right;
+        }
+
+        .name-weight>.weight-space {
+            display: block;
+            border-bottom: 1px solid black;
+            grid-area: weight;
+        }
+
+        .support-exercise-reps {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 125px;
+        }
+
+        .support-exercise-reps>span {
+            border-bottom: 1px solid black;
+            margin-left: 5px;
+        }
+
         .support {
-            line-height: 24pt;
+            margin-top: 15px;
         }
 
         .support-exercises {
@@ -130,13 +165,17 @@
                 {% for i in range(end=13) %}
                 <div class="support exercise">
                     <div class="name-weight">
-                        <span>_________________________</span>
-                        <span>_____#</span>
+                        {% if week.number in supports.included_weeks and supports.bench[i] %}
+                        <span class="exercise-name">{{supports.bench[i].name}}</span>
+                        {% else %}
+                        <span class="exercise-name"></span>
+                        {% endif %}
+                        <span class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span>_____</span>
-                        <span>_____</span>
-                        <span>_____</span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
@@ -175,13 +214,17 @@
                 {% for i in range(end=13) %}
                 <div class="support exercise">
                     <div class="name-weight">
-                        <span>_________________________</span>
-                        <span>_____#</span>
+                        {% if week.number in supports.included_weeks and supports.squat[i] %}
+                        <span class="exercise-name">{{supports.squat[i].name}}</span>
+                        {% else %}
+                        <span class="exercise-name"></span>
+                        {% endif %}
+                        <span class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span>_____</span>
-                        <span>_____</span>
-                        <span>_____</span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
@@ -220,13 +263,17 @@
                 {% for i in range(end=13) %}
                 <div class="support exercise">
                     <div class="name-weight">
-                        <span>_________________________</span>
-                        <span>_____#</span>
+                        {% if week.number in supports.included_weeks and supports.ohp[i] %}
+                        <span class="exercise-name">{{supports.ohp[i].name}}</span>
+                        {% else %}
+                        <span class="exercise-name"></span>
+                        {% endif %}
+                        <span class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span>_____</span>
-                        <span>_____</span>
-                        <span>_____</span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
@@ -266,13 +313,17 @@
                 {% for i in range(end=13) %}
                 <div class="support exercise">
                     <div class="name-weight">
-                        <span>_________________________</span>
-                        <span>_____#</span>
+                        {% if week.number in supports.included_weeks and supports.dead[i] %}
+                        <span class="exercise-name">{{supports.dead[i].name}}</span>
+                        {% else %}
+                        <span class="exercise-name"></span>
+                        {% endif %}
+                        <span class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span>_____</span>
-                        <span>_____</span>
-                        <span>_____</span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
+                        <span class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
