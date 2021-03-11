@@ -1,6 +1,7 @@
 /target
-support.toml
-weights.toml
+*.toml
 /*.html
 /*.json
 /*.yaml
+
+!Cargo.toml

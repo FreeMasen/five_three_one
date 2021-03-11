@@ -158,7 +158,7 @@
                 {% for weight in week.bench %}
                 <div class="exercise-detail">
                     <div class="exercise-weight">
-                        <span class="weight-value">{{weight.value}}#</span>
+                        <span contenteditable="true" class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
                         <span contenteditable="true" class="exercise-reps empty"></span>
@@ -175,7 +175,7 @@
                 <div class="support exercise">
                     <div class="name-weight">
                         {% if week.number in supports.included_weeks and supports.bench[i] %}
-                        <span class="exercise-name">{{supports.bench[i].name}}</span>
+                        <span contenteditable="true" class="exercise-name">{{supports.bench[i].name}}</span>
                         {% else %}
                         <span contenteditable="true" class="exercise-name"></span>
                         {% endif %}
@@ -207,7 +207,7 @@
                 {% for weight in week.squat %}
                 <div class="exercise-detail">
                     <div class="exercise-weight">
-                        <span  class="weight-value">{{weight.value}}#</span>
+                        <span contenteditable="true" class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
                         <span contenteditable="true" class="exercise-reps empty"></span>
@@ -224,7 +224,7 @@
                 <div class="support exercise">
                     <div class="name-weight">
                         {% if week.number in supports.included_weeks and supports.squat[i] %}
-                        <span class="exercise-name">{{supports.squat[i].name}}</span>
+                        <span contenteditable="true" class="exercise-name">{{supports.squat[i].name}}</span>
                         {% else %}
                         <span contenteditable="true" class="exercise-name"></span>
                         {% endif %}
@@ -273,7 +273,7 @@
                 <div class="support exercise">
                     <div class="name-weight">
                         {% if week.number in supports.included_weeks and supports.ohp[i] %}
-                        <span class="exercise-name">{{supports.ohp[i].name}}</span>
+                        <span contenteditable="true" class="exercise-name">{{supports.ohp[i].name}}</span>
                         {% else %}
                         <span contenteditable="true" class="exercise-name"></span>
                         {% endif %}
@@ -400,7 +400,6 @@
                 toggle_order();
             }
         });
-        console.log('loaded');
     </script>
     {% endblock content %}
 </body>

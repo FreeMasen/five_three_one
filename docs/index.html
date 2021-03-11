@@ -1,0 +1,3884 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            width: 11in;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .plan-list {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+        @media print {
+            @page {
+                margin-top: 0.25in;
+                margin-left: 0.5in;
+                margin-right: 0.5in;
+                margin-bottom: 0.5in;
+            }
+
+            h1,
+            h2 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            .week {
+                page-break-after: always;
+                page-break-inside: avoid;
+                break-after: always;
+                break-inside: avoid;
+            }
+        }
+
+        .day {
+            width: 4in;
+            height: 7.5in;
+            margin: 0.5in;
+        }
+
+        .day>h2,
+        .day>h3 {
+            text-align: center;
+        }
+
+        .exercise {
+            font-size: 11pt;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+        }
+
+        .name-weight {
+            display: grid;
+            grid-template-columns: 8fr 1fr 2fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "name space weight";
+            width: 230px;
+        }
+
+        .name-weight>.exercise-name {
+            display: block;
+            border-bottom: 1px solid black;
+            grid-area: name;
+        }
+
+        .weight-space {
+            text-align: right;
+        }
+
+        .name-weight>.weight-space {
+            display: block;
+            border-bottom: 1px solid black;
+            grid-area: weight;
+        }
+
+        .support-exercise-reps {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 125px;
+        }
+
+        .support-exercise-reps>span,
+        .exercise-reps {
+            border-bottom: 1px solid black;
+            margin-left: 5px;
+        }
+
+        .support {
+            margin-top: 15px;
+        }
+
+        .support-exercises {
+            margin-top: 5px;
+        }
+
+        .exercise-detail {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+
+        .exercise-weight {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: start;
+        }
+
+        .exercise-reps {
+            font-weight: bold;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .weight-side {
+            font-size: 8pt;
+        }
+
+        .date-line {
+            display: inline-block;
+            width: 200px;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="plan-list">
+        
+        <div class="day">
+            <h2>
+                
+                First Week
+                
+            </h2>
+            <h3>Bench <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 75#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 85#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">100#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(25 2.5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                First Week
+                
+            </h2>
+            <h3>Squat <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">130#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(35 5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">150#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(45 5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">165#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(35 25)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                First Week
+                
+            </h2>
+            <h3>OHP <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 60#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 65#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 75#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(10 5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                First Week
+                
+            </h2>
+            <h3>Deads <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">120#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(35 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">135#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(45)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">155#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(45 10)</span>
+                </div>
+                
+            </div>
+
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        <div class="day">
+            <h2>
+                
+                Second Week
+                
+            </h2>
+            <h3>Bench <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 80#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 90#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">105#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(25 5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Second Week
+                
+            </h2>
+            <h3>Squat <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">140#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(45 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">155#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(45 10)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">175#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(45 10 10)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Second Week
+                
+            </h2>
+            <h3>OHP <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 60#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 70#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 80#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(10 5 2.5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Second Week
+                
+            </h2>
+            <h3>Deads <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">130#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(35 5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">145#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(45 5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">165#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(35 25)</span>
+                </div>
+                
+            </div>
+
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        <div class="day">
+            <h2>
+                
+                Max Week
+                
+            </h2>
+            <h3>Bench <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 85#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">100#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(25 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">110#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(25 5 2.5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Max Week
+                
+            </h2>
+            <h3>Squat <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">150#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(45 5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">165#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(35 25)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">185#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(45 25)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Max Week
+                
+            </h2>
+            <h3>OHP <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 65#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 75#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 85#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Max Week
+                
+            </h2>
+            <h3>Deads <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">135#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(45)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">155#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">3</span>
+                        
+                    </div>
+                    <span class="weight-side">(45 10)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value">175#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(45 10 10)</span>
+                </div>
+                
+            </div>
+
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        <div class="day">
+            <h2>
+                
+                Rest Week
+                
+            </h2>
+            <h3>Bench <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 60#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 60#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(5 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 60#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(5 2.5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Rest Week
+                
+            </h2>
+            <h3>Squat <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">100#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(25 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">100#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(25 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value">100#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(25 2.5)</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Rest Week
+                
+            </h2>
+            <h3>OHP <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 45#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">()</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 45#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">()</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span contenteditable="true" class="weight-value"> 45#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">()</span>
+                </div>
+                
+            </div>
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="day">
+            <h2>
+                
+                Rest Week
+                
+            </h2>
+            <h3>Deads <span contenteditable="true" class="date-line"></span></h3>
+            <div class="exercise">
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value"> 90#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value"> 90#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty">5</span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10 2.5)</span>
+                </div>
+                
+                <div class="exercise-detail">
+                    <div class="exercise-weight">
+                        <span class="weight-value"> 90#</span>
+                        <span>x</span>
+                        
+                        <span contenteditable="true" class="exercise-reps empty"></span>
+                        
+                    </div>
+                    <span class="weight-side">(10 10 2.5)</span>
+                </div>
+                
+            </div>
+
+            <div class="support-exercises">
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+                <div class="support exercise">
+                    <div class="name-weight">
+                        
+                        <span contenteditable="true" class="exercise-name"></span>
+                        
+                        <span contenteditable="true" class="weight-space">#</span>
+                    </div>
+                    <div class="support-exercise-reps">
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+    </div>
+    <script>
+        function toggle_order() {
+            let parent = document.querySelector('.plan-list');
+            if (parent.dataset.order === undefined) {
+                parent.dataset.order = 'default';
+            }
+            reorder(parent);
+        }
+
+        /**
+         * @param {HTMLDivElement} parent
+         */
+        function reorder(parent) {
+            let days = Array.from(parent.querySelectorAll('.day'));
+            for (let i = 0; i < days.length; i++) {
+                let day = days[i];
+                parent.removeChild(day);
+                day.dataset.number = `${i+1}`;
+            }
+            if (parent.dataset.order == 'default') {
+                parent.dataset.order = 'book';
+                book_order(parent, days);
+            } else {
+                parent.dataset.order = 'default';
+                default_order(parent, days);
+            }
+        }
+        /**
+         * @param {HTMLDivElement} parent
+         * @param {HTMLDivElement[]} days
+         */
+        function book_order(parent, days) {
+            
+            while (days.length > 0) {
+                let out_r = days.shift();
+                let out_l = days.pop();
+                parent.appendChild(out_l);
+                parent.appendChild(out_r);
+                let in_r = days.pop();
+                let in_l = days.shift();
+                parent.appendChild(in_l);
+                parent.appendChild(in_r);
+            }
+        }
+        /**
+         * @param {HTMLDivElement} parent
+         * @param {HTMLDivElement[]} days
+         */
+        function default_order(parent, days) {
+            days.sort((lhs, rhs) => lhs.dataset.number - rhs.dataset.number);
+            for (let day of days) {
+                parent.appendChild(day);
+            }
+        }
+        window.addEventListener('keyup', ev => {
+            if (ev.altKey && ev.keyCode === 79) {
+                toggle_order();
+            }
+        });
+    </script>
+    
+</body>
+
+</html>

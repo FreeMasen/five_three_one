@@ -20,7 +20,7 @@ static DEFAULT_WEIGHTS: &str = include_str!("default_weights.toml");
 pub enum Args {
     /// Generate a 5/3/1 plan
     Generate(GenerateArgs),
-    /// Calculate a one rep max from a weight and reps
+    /// Estimate a one rep max from a weight and reps
     OneRep(OneRepArgs),
     /// Calculate all of the weights that can be provided
     /// by a set of plates, this is helpful since unique combinations
