@@ -120,6 +120,8 @@
 
         .exercise-reps {
             font-weight: bold;
+            min-width: 25px;
+            text-align: center;
         }
 
         .weight-side {
@@ -161,7 +163,7 @@
                         {% if loop.index == 3 %}
                         <span contenteditable="true" class="exercise-reps empty"></span>
                         {% else %}
-                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        <span contenteditable="true" class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
                     </div>
                     <span class="weight-side">{{weight.side}}</span>
@@ -205,12 +207,12 @@
                 {% for weight in week.squat %}
                 <div class="exercise-detail">
                     <div class="exercise-weight">
-                        <span class="weight-value">{{weight.value}}#</span>
+                        <span  class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty"></span>
+                        <span contenteditable="true" class="exercise-reps empty"></span>
                         {% else %}
-                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        <span contenteditable="true" class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
                     </div>
                     <span class="weight-side">{{weight.side}}</span>
@@ -254,12 +256,12 @@
                 {% for weight in week.ohp %}
                 <div class="exercise-detail">
                     <div class="exercise-weight">
-                        <span class="weight-value">{{weight.value}}#</span>
+                        <span contenteditable="true" class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty"></span>
+                        <span contenteditable="true" class="exercise-reps empty"></span>
                         {% else %}
-                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        <span contenteditable="true" class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
                     </div>
                     <span class="weight-side">{{weight.side}}</span>
@@ -306,9 +308,9 @@
                         <span class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty"></span>
+                        <span contenteditable="true" class="exercise-reps empty"></span>
                         {% else %}
-                        <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
+                        <span contenteditable="true" class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
                     </div>
                     <span class="weight-side">{{weight.side}}</span>
@@ -394,7 +396,7 @@
             }
         }
         window.addEventListener('keyup', ev => {
-            if (ev.altKey && ev.key.toLocaleLowerCase() == 'o') {
+            if (ev.altKey && ev.keyCode === 79) {
                 toggle_order();
             }
         });
