@@ -91,7 +91,8 @@
             width: 125px;
         }
 
-        .support-exercise-reps>span {
+        .support-exercise-reps>span,
+        .exercise-reps {
             border-bottom: 1px solid black;
             margin-left: 5px;
         }
@@ -124,6 +125,12 @@
         .weight-side {
             font-size: 8pt;
         }
+
+        .date-line {
+            display: inline-block;
+            width: 200px;
+            border-bottom: 1px solid black;
+        }
     </style>
 </head>
 
@@ -144,7 +151,7 @@
                 Second Week
                 {% endif %}
             </h2>
-            <h3>Bench ______________</h3>
+            <h3>Bench <span contenteditable="true" class="date-line"></span></h3>
             <div class="exercise">
                 {% for weight in week.bench %}
                 <div class="exercise-detail">
@@ -152,7 +159,7 @@
                         <span class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty">_____</span>
+                        <span contenteditable="true" class="exercise-reps empty"></span>
                         {% else %}
                         <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
@@ -168,14 +175,14 @@
                         {% if week.number in supports.included_weeks and supports.bench[i] %}
                         <span class="exercise-name">{{supports.bench[i].name}}</span>
                         {% else %}
-                        <span class="exercise-name"></span>
+                        <span contenteditable="true" class="exercise-name"></span>
                         {% endif %}
-                        <span class="weight-space">#</span>
+                        <span contenteditable="true" class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span class="exercise-rep"></span>
-                        <span class="exercise-rep"></span>
-                        <span class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
@@ -193,7 +200,7 @@
                 Second Week
                 {% endif %}
             </h2>
-            <h3>Squat ______________</h3>
+            <h3>Squat <span contenteditable="true" class="date-line"></span></h3>
             <div class="exercise">
                 {% for weight in week.squat %}
                 <div class="exercise-detail">
@@ -201,7 +208,7 @@
                         <span class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty">_____</span>
+                        <span class="exercise-reps empty"></span>
                         {% else %}
                         <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
@@ -222,9 +229,9 @@
                         <span contenteditable="true" class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span class="exercise-rep"></span>
-                        <span class="exercise-rep"></span>
-                        <span class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
@@ -242,7 +249,7 @@
                 Second Week
                 {% endif %}
             </h2>
-            <h3>OHP ______________</h3>
+            <h3>OHP <span contenteditable="true" class="date-line"></span></h3>
             <div class="exercise">
                 {% for weight in week.ohp %}
                 <div class="exercise-detail">
@@ -250,7 +257,7 @@
                         <span class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty">_____</span>
+                        <span class="exercise-reps empty"></span>
                         {% else %}
                         <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
@@ -291,7 +298,7 @@
                 Second Week
                 {% endif %}
             </h2>
-            <h3>Deads ______________</h3>
+            <h3>Deads <span contenteditable="true" class="date-line"></span></h3>
             <div class="exercise">
                 {% for weight in week.dead %}
                 <div class="exercise-detail">
@@ -299,7 +306,7 @@
                         <span class="weight-value">{{weight.value}}#</span>
                         <span>x</span>
                         {% if loop.index == 3 %}
-                        <span class="exercise-reps empty">_____</span>
+                        <span class="exercise-reps empty"></span>
                         {% else %}
                         <span class="exercise-reps empty">{{week.reps[loop.index0]}}</span>
                         {% endif %}
@@ -316,14 +323,14 @@
                         {% if week.number in supports.included_weeks and supports.dead[i] %}
                         <span class="exercise-name">{{supports.dead[i].name}}</span>
                         {% else %}
-                        <span class="exercise-name"></span>
+                        <span contenteditable="true" class="exercise-name"></span>
                         {% endif %}
-                        <span class="weight-space">#</span>
+                        <span contenteditable="true" class="weight-space">#</span>
                     </div>
                     <div class="support-exercise-reps">
-                        <span class="exercise-rep"></span>
-                        <span class="exercise-rep"></span>
-                        <span class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
+                        <span contenteditable="true" class="exercise-rep"></span>
                     </div>
                 </div>
                 {% endfor %}
