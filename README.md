@@ -4,41 +4,10 @@ A utility for generating 5/3/1 weightlifting plans
 
 ## Usage
 
-```sh
-five_three_one 0.1.0
-
-USAGE:
-    five_three_one <SUBCOMMAND>
-
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-
-SUBCOMMANDS:
-    generate    Generate an html file with a formatted plan
-    help        Prints this message or the help of the given subcommand(s)
-    init        Initialize a configuration
-    next        Update an existing configuration for the next month
-```
+# Init
 
 ```sh
-five_three_one-generate 0.1.0
-Generate an html file with a formatted plan
-
-USAGE:
-    five_three_one generate --input <input> --output <output>
-
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-
-OPTIONS:
-    -i, --input <input>      Path to the config file
-    -o, --output <output>    Path to the html output
-```
-
-```sh
-five_three_one-init 0.1.0
+five_three_one-init 0.2.0
 Initialize a configuration
 
 USAGE:
@@ -57,8 +26,10 @@ OPTIONS:
     -s, --squat <squat>                      Squat One Rep Max
 ```
 
+# Next
+
 ```sh
-five_three_one-next 0.1.0
+five_three_one-next 0.2.0
 Update an existing configuration for the next month
 
 USAGE:
@@ -72,4 +43,22 @@ FLAGS:
 OPTIONS:
     -i, --input <input>      The current TOML file
     -o, --output <output>    If provided, where to write the updated output. Defaults to stdout
+```
+
+# Generate
+
+```sh
+five_three_one-generate 0.2.0
+Generate an html file with a formatted plan
+
+USAGE:
+    five_three_one generate --input <input> --output <output>
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -i, --input <input>      Path to the config file
+    -o, --output <output>    Path to the html output
 ```

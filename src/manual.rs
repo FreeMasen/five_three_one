@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use structopt::StructOpt;
 
-use crate::{RenderedSupport, RenderedSupports, RenderedWeek, RenderedWeeks, Weight};
+use crate::{RenderedSupport, RenderedSupports, DayName, RenderedDay, RenderedWeek, RenderedWeeks, Weight};
 
 #[derive(Debug, Clone, StructOpt)]
 enum Args {
@@ -89,6 +89,31 @@ impl Default for Supports {
     }
 }
 
+fn render_supports(iter: impl Iterator<Item = Support>) -> [RenderedSupport; 13] {
+    let mut ret = [
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+        RenderedSupport::default(),
+    ];
+    for (i, v) in iter.enumerate() {
+        ret[i] = RenderedSupport {
+            name: v.name,
+            reps: v.reps.as_ref().map(ToString::to_string).unwrap_or_default(),
+        };
+    }
+    ret
+}
+
 impl Into<RenderedSupports> for Supports {
     fn into(self) -> RenderedSupports {
         let mut ret = RenderedSupports::default();
@@ -142,33 +167,44 @@ impl Into<RenderedWeeks> for ConfigFile {
             WEEK_FOUR_NAME,
         ];
         let mut weeks = Vec::new();
+        let supports = self.supports.unwrap_or_default();
+        
         for i in 0..4 {
+            
             let week = RenderedWeek {
-                bench: self.bench_press[i]
-                    .iter()
-                    .copied()
-                    .map(|f| f.into())
-                    .collect(),
-                ohp: self.overhead_press[i]
-                    .iter()
-                    .copied()
-                    .map(|f| f.into())
-                    .collect(),
-                squat: self.squat[i].iter().copied().map(|f| f.into()).collect(),
-                dead: self.dead_lift[i]
-                    .iter()
-                    .copied()
-                    .map(|f| f.into())
-                    .collect(),
+                days: vec![
+                    RenderedDay {
+                        name: DayName::Deads,
+                        exercises: self.dead_lift[i].iter().copied().map(|f| f.into()).collect(),
+                        supports: render_supports(supports.dead_lift.iter().cloned()),
+                        reps: reps_for_week(i),
+                    },
+                    RenderedDay {
+                        name: DayName::Squat,
+                        exercises: self.squat[i].iter().copied().map(|f| f.into()).collect(),
+                        supports: render_supports(supports.squat.iter().cloned()),
+                        reps: reps_for_week(i),
+                    },
+                    RenderedDay {
+                        name: DayName::Bench,
+                        exercises: self.bench_press[i].iter().copied().map(|f| f.into()).collect(),
+                        supports: render_supports(supports.bench_press.iter().cloned()),
+                        reps: reps_for_week(i),
+                    },
+                    RenderedDay {
+                        name: DayName::OHP,
+                        exercises: self.overhead_press[i].iter().copied().map(|f| f.into()).collect(),
+                        supports: render_supports(supports.overhead_press.iter().cloned()),
+                        reps: reps_for_week(i),
+                    },
+                ],
+                number: i as _,
                 name: WEEK_NAMES[i],
-                number: (i + 1) as u32,
-                reps: reps_for_week(i),
             };
             weeks.push(week);
         }
         RenderedWeeks {
             weeks,
-            supports: self.supports.map(|s| s.into()).unwrap_or_default(),
         }
     }
 }

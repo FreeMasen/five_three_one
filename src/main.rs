@@ -23,18 +23,28 @@ pub struct RenderedSupport {
 #[template(path = "plan.html")]
 pub struct RenderedWeeks {
     weeks: Vec<RenderedWeek>,
-    supports: RenderedSupports,
 }
 
 #[derive(Debug, Serialize, Clone)]
 pub struct RenderedWeek {
     number: u32,
     name: &'static str,
-    squat: Vec<Weight>,
-    dead: Vec<Weight>,
-    bench: Vec<Weight>,
-    ohp: Vec<Weight>,
+    days: Vec<RenderedDay>,
+}
+
+#[derive(Debug, Serialize, Clone)]
+pub enum DayName {
+    Bench,
+    OHP,
+    Squat,
+    Deads,    
+}
+#[derive(Debug, Serialize, Clone)]
+pub struct RenderedDay {
+    name: DayName,
+    exercises: Vec<Weight>,
     reps: [u8; 3],
+    supports: [RenderedSupport; 13],
 }
 
 #[derive(Debug, Serialize, Clone)]

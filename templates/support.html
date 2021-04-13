@@ -1,0 +1,10 @@
+<div class="support">
+    <div contenteditable="true" class="support-name">{{support.name}}</div>
+    {% for j in [0,1,2] %}
+        <div contenteditable="true" class="support-weight-{{j}}"></div>
+        <div class="support-x-{{j}}">x</div>
+        <div contenteditable="true" class="support-count-{{j}}">
+            {{support.reps}}
+        </div>
+    {% endfor %}
+</div>

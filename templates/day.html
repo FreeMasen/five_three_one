@@ -1,0 +1,21 @@
+<div class="exercise">
+    {% for weight in day.exercises %}
+    <div class="exercise-detail">
+        <div class="exercise-weight">
+            <span contenteditable="true" class="weight-value">{{weight.value}}#</span>
+            <span>x</span>
+            {% if loop.index == 3 %}
+            <span contenteditable="true" class="exercise-reps empty"></span>
+            {% else %}
+            <span contenteditable="true" class="exercise-reps empty">{{day.reps[loop.index0]}}</span>
+            {% endif %}
+        </div>
+        <span class="weight-side">{{weight.side}}</span>
+    </div>
+    {% endfor %}
+</div>
+<div class="supports">
+    {% for support in day.supports %}
+        {% include "support.html" %}
+    {% endfor %}
+</div>

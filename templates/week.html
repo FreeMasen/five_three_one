@@ -1,0 +1,6 @@
+{% for day in week.days %}
+<div class="day">
+    <h2>{{week.name}}</h2>
+    {% include "day.html" %}
+</div>
+{% endfor %}
