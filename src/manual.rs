@@ -7,8 +7,11 @@ use crate::{RenderedSupport, RenderedSupports, RenderedWeek, RenderedWeeks, Weig
 
 #[derive(Debug, Clone, StructOpt)]
 enum Args {
+    /// Initialize a configuration
     Init(InitArgs),
+    /// Update an existing configuration for the next month
     Next(NextArgs),
+    /// Generate an html file with a formatted plan
     Generate(GenerateArgs),
 }
 
