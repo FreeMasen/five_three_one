@@ -137,7 +137,7 @@ h1 {
     grid-template-columns: 170px 5px 40px 10px 40px 5px 40px 10px 40px 5px 40px 10px 40px;
     grid-template-rows: 1fr;
     grid-template-areas: 'name sp0 wt1 ex1 rep1 sp1 wt2 ex2 rep2 sp2 wt3 ex3 rep3';
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .support-name {
@@ -178,4 +178,12 @@ h1 {
 .support-weight-2,
 .support-count-2 {
     border-bottom: 1px solid black;
+}
+
+.support-x-0,.support-x-1,.support-x-2,
+.support-weight-0, .support-weight-1, .support-weight-2,
+.support-count-0, .support-count-1, .support-count-2 {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
 }

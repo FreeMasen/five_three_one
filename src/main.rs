@@ -39,6 +39,18 @@ pub enum DayName {
     Squat,
     Deads,    
 }
+
+impl std::fmt::Display for DayName {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Bench => write!(f, "Bench"),
+            Self::OHP => write!(f, "OHP"),
+            Self::Squat => write!(f, "Squat"),
+            Self::Deads => write!(f, "Deads"),
+        }
+    }
+}
+
 #[derive(Debug, Serialize, Clone)]
 pub struct RenderedDay {
     name: DayName,
