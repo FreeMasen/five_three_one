@@ -52,7 +52,7 @@ function default_order(parent, days) {
     }
 }
 window.addEventListener('keyup', ev => {
-    if (ev.altKey && ev.keyCode === 79) {
+    if (ev.altKey && ev.code === 'KeyO') {
         toggle_order();
     }
 });

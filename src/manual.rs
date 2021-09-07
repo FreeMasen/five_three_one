@@ -89,6 +89,33 @@ impl Default for Supports {
     }
 }
 
+impl Supports {
+    fn dead_lift_for(&self, week: u8) -> impl Iterator<Item = Support> {
+        if !self.included_weeks.contains(&week) {
+            return Vec::new().into_iter()
+        }
+        self.dead_lift.clone().into_iter()
+    }
+    fn squat_for(&self, week: u8) -> impl Iterator<Item = Support> {
+        if !self.included_weeks.contains(&week) {
+            return Vec::new().into_iter()
+        }
+        self.squat.clone().into_iter()
+    }
+    fn overhead_press_for(&self, week: u8) -> impl Iterator<Item = Support> {
+        if !self.included_weeks.contains(&week) {
+            return Vec::new().into_iter()
+        }
+        self.overhead_press.clone().into_iter()
+    }
+    fn bench_press_for(&self, week: u8) -> impl Iterator<Item = Support> {
+        if !self.included_weeks.contains(&week) {
+            return Vec::new().into_iter()
+        }
+        self.bench_press.clone().into_iter()
+    }
+}
+
 fn render_supports(iter: impl Iterator<Item = Support>) -> [RenderedSupport; 13] {
     let mut ret = [
         RenderedSupport::default(),
@@ -141,6 +168,15 @@ pub struct Support {
     reps: Option<u8>,
 }
 
+impl Support {
+    fn placeholder() -> Self {
+        Self {
+            name: "Placeholder".to_string(),
+            reps: None,
+        }
+    }
+}
+
 impl Into<RenderedSupport> for Support {
     fn into(self) -> RenderedSupport {
         RenderedSupport {
@@ -176,25 +212,25 @@ impl Into<RenderedWeeks> for ConfigFile {
                     RenderedDay {
                         name: DayName::Deads,
                         exercises: self.dead_lift[i].iter().copied().map(|f| f.into()).collect(),
-                        supports: render_supports(supports.dead_lift.iter().cloned()),
+                        supports: render_supports(supports.dead_lift_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
                     RenderedDay {
                         name: DayName::Squat,
                         exercises: self.squat[i].iter().copied().map(|f| f.into()).collect(),
-                        supports: render_supports(supports.squat.iter().cloned()),
+                        supports: render_supports(supports.squat_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
                     RenderedDay {
                         name: DayName::Bench,
                         exercises: self.bench_press[i].iter().copied().map(|f| f.into()).collect(),
-                        supports: render_supports(supports.bench_press.iter().cloned()),
+                        supports: render_supports(supports.bench_press_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
                     RenderedDay {
                         name: DayName::OHP,
                         exercises: self.overhead_press[i].iter().copied().map(|f| f.into()).collect(),
-                        supports: render_supports(supports.overhead_press.iter().cloned()),
+                        supports: render_supports(supports.overhead_press_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
                 ],
@@ -226,9 +262,13 @@ fn run_next(args: NextArgs) -> R<()> {
     if args.clear_supports {
         if let Some(supports) = config.supports.as_mut() {
             supports.bench_press.clear();
+            supports.bench_press.push(Support::placeholder());
             supports.overhead_press.clear();
+            supports.overhead_press.push(Support::placeholder());
             supports.squat.clear();
+            supports.squat.push(Support::placeholder());
             supports.dead_lift.clear();
+            supports.dead_lift.push(Support::placeholder());
         }
     }
     for item in config.bench_press.iter_mut() {
@@ -262,9 +302,13 @@ fn run_next(args: NextArgs) -> R<()> {
 
 fn run_init(args: InitArgs) -> R<()> {
     let mut config = ConfigFile::default();
+    log::debug!("Bench");
     config.bench_press = max_to_sets(args.bench_press, args.ninety);
+    log::debug!("OHP");
     config.overhead_press = max_to_sets(args.overhead_press, args.ninety);
+    log::debug!("Squat");
     config.squat = max_to_sets(args.squat, args.ninety);
+    log::debug!("Dead");
     config.dead_lift = max_to_sets(args.dead_lift, args.ninety);
     config.supports = Some(Supports::default());
     let text = toml::to_string_pretty(&config)?;
@@ -290,27 +334,43 @@ fn max_to_sets(max: f32, ninety: bool) -> [[f32; 3]; 4] {
     const WEEK_THREE_PERCENTS: [f32; 3] = [0.75, 0.85, 0.95];
     const WEEK_FOUR_PERCENTS: [f32; 3] = [0.5, 0.5, 0.5];
     let base = if ninety { max } else { max * 0.9 };
+    log::debug!("base: {}", base);
     let mut ret = [[0f32; 3], [0f32; 3], [0f32; 3], [0f32; 3]];
+    log::debug!("week 1");
     for (i, &mul) in WEEK_ONE_PERCENTS.iter().enumerate() {
-        ret[0][i] = mul_fixed(base, mul);
+        let val = mul_fixed(base, mul);
+        log::debug!("Set {}: {}", i, val);
+        ret[0][i] = val;
     }
+    log::debug!("week 2");
     for (i, &mul) in WEEK_TWO_PERCENTS.iter().enumerate() {
+        let val = mul_fixed(base, mul);
+        log::debug!("Set {}: {}", i, val);
         ret[1][i] = mul_fixed(base, mul);
     }
+    log::debug!("week 3");
     for (i, &mul) in WEEK_THREE_PERCENTS.iter().enumerate() {
+        let val = mul_fixed(base, mul);
+        log::debug!("Set {}: {}", i, val);
         ret[2][i] = mul_fixed(base, mul);
     }
+    log::debug!("week 4");
     for (i, &mul) in WEEK_FOUR_PERCENTS.iter().enumerate() {
+        let val = mul_fixed(base, mul);
+        log::debug!("Set {}: {}", i, val);
         ret[3][i] = mul_fixed(base, mul);
     }
     ret
 }
 
 fn mul_fixed(base: f32, mul: f32) -> f32 {
+    log::trace!("mul_fixed {}, {}", base, mul);
     let mut ret = (base * mul).round();
+    log::trace!("init: {}", ret);
     while ret % 5.0 != 0.0 {
         ret += 1.0;
     }
+    log::trace!("ret: {}", ret);
     ret
 }
 

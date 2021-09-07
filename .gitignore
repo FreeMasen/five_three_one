@@ -3,5 +3,7 @@
 /*.html
 /*.json
 /*.yaml
-
 !Cargo.toml
+/data/
+/reports/
+/.vscode

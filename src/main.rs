@@ -66,5 +66,6 @@ struct Weight {
 }
 
 fn main() {
+    pretty_env_logger::init();
     manual::run().unwrap();
 }
