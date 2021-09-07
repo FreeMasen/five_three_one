@@ -2,6 +2,7 @@ use askama::Template;
 use serde::Serialize;
 use std::fmt::Debug;
 
+mod index;
 mod manual;
 
 #[derive(Debug, Clone, Default, Serialize)]
@@ -37,7 +38,7 @@ pub enum DayName {
     Bench,
     OHP,
     Squat,
-    Deads,    
+    Deads,
 }
 
 impl std::fmt::Display for DayName {

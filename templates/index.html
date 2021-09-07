@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>531 Workouts</title>
+        <style>
+            {% include "style.css" %}
+            {% include "index.css" %}
+        </style>
+    </head>
+    <body>
+        <h1>531 Workouts</h1>
+        <div class="workout-list-contianer">
+            <ul class="year-list">
+                
+                {% for year in years %}
+                    <li>
+                        <h2>{{year.year}}</h2>
+                        <ul class="month-list">
+                            {% for month in year.months %}
+                                <a href="{{month.href}}">
+                                    <li>
+                                        {{month.name}}
+                                    </li>
+                                </a>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>

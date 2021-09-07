@@ -3,7 +3,10 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use structopt::StructOpt;
 
-use crate::{RenderedSupport, RenderedSupports, DayName, RenderedDay, RenderedWeek, RenderedWeeks, Weight};
+use crate::{
+    index::{run_index, IndexArgs},
+    DayName, RenderedDay, RenderedSupport, RenderedSupports, RenderedWeek, RenderedWeeks, Weight,
+};
 
 #[derive(Debug, Clone, StructOpt)]
 enum Args {
@@ -13,6 +16,8 @@ enum Args {
     Next(NextArgs),
     /// Generate an html file with a formatted plan
     Generate(GenerateArgs),
+    /// Generate an Index.html file
+    Index(IndexArgs),
 }
 
 #[derive(Debug, Clone, StructOpt)]
@@ -92,25 +97,25 @@ impl Default for Supports {
 impl Supports {
     fn dead_lift_for(&self, week: u8) -> impl Iterator<Item = Support> {
         if !self.included_weeks.contains(&week) {
-            return Vec::new().into_iter()
+            return Vec::new().into_iter();
         }
         self.dead_lift.clone().into_iter()
     }
     fn squat_for(&self, week: u8) -> impl Iterator<Item = Support> {
         if !self.included_weeks.contains(&week) {
-            return Vec::new().into_iter()
+            return Vec::new().into_iter();
         }
         self.squat.clone().into_iter()
     }
     fn overhead_press_for(&self, week: u8) -> impl Iterator<Item = Support> {
         if !self.included_weeks.contains(&week) {
-            return Vec::new().into_iter()
+            return Vec::new().into_iter();
         }
         self.overhead_press.clone().into_iter()
     }
     fn bench_press_for(&self, week: u8) -> impl Iterator<Item = Support> {
         if !self.included_weeks.contains(&week) {
-            return Vec::new().into_iter()
+            return Vec::new().into_iter();
         }
         self.bench_press.clone().into_iter()
     }
@@ -204,14 +209,17 @@ impl Into<RenderedWeeks> for ConfigFile {
         ];
         let mut weeks = Vec::new();
         let supports = self.supports.unwrap_or_default();
-        
+
         for i in 0..4 {
-            
             let week = RenderedWeek {
                 days: vec![
                     RenderedDay {
                         name: DayName::Deads,
-                        exercises: self.dead_lift[i].iter().copied().map(|f| f.into()).collect(),
+                        exercises: self.dead_lift[i]
+                            .iter()
+                            .copied()
+                            .map(|f| f.into())
+                            .collect(),
                         supports: render_supports(supports.dead_lift_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
@@ -223,13 +231,21 @@ impl Into<RenderedWeeks> for ConfigFile {
                     },
                     RenderedDay {
                         name: DayName::Bench,
-                        exercises: self.bench_press[i].iter().copied().map(|f| f.into()).collect(),
+                        exercises: self.bench_press[i]
+                            .iter()
+                            .copied()
+                            .map(|f| f.into())
+                            .collect(),
                         supports: render_supports(supports.bench_press_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
                     RenderedDay {
                         name: DayName::OHP,
-                        exercises: self.overhead_press[i].iter().copied().map(|f| f.into()).collect(),
+                        exercises: self.overhead_press[i]
+                            .iter()
+                            .copied()
+                            .map(|f| f.into())
+                            .collect(),
                         supports: render_supports(supports.overhead_press_for((i + 1) as u8)),
                         reps: reps_for_week(i),
                     },
@@ -239,9 +255,7 @@ impl Into<RenderedWeeks> for ConfigFile {
             };
             weeks.push(week);
         }
-        RenderedWeeks {
-            weeks,
-        }
+        RenderedWeeks { weeks }
     }
 }
 
@@ -253,6 +267,7 @@ pub fn run() -> R<()> {
         Args::Init(args) => run_init(args),
         Args::Next(args) => run_next(args),
         Args::Generate(args) => run_generate(args),
+        Args::Index(args) => run_index(args),
     }
 }
 
